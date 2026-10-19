@@ -10,7 +10,7 @@ void main() {
     System.out.println("Система управления радиостанциями (Вариант 22)");
 
     while (true) {
-        System.out.println("\n--- ГЛАВНОЕ МЕНЮ ---");
+        System.out.println("\n ГЛАВНОЕ МЕНЮ ");
         System.out.println("1. Создать / добавить объект");
         System.out.println("2. Показать все объекты");
         System.out.println("3. Изменить объект по индексу");
@@ -121,7 +121,7 @@ void main() {
 
                 double averageRange = totalRange / count;
 
-                System.out.println("\n Аналитика");
+                System.out.println("\n Аналитика ");
                 System.out.printf("Средняя макс. дальность по всем радио: %.2f км\n", averageRange);
                 System.out.printf("Абсолютный максимум дальности: %.2f км (Бренд: %s)\n", absoluteMaxRange, bestRadio);
                 break;
