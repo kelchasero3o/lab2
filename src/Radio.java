@@ -1,4 +1,4 @@
-public class Radio {
+﻿public class Radio {
     private String brand;
     private double maxRange;
 
