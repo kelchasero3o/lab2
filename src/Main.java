@@ -7,7 +7,7 @@ void main() {
     Radio[] radios = new Radio[10];
     int count = 0;
 
-    System.out.println("=== Система управления радиостанциями (Вариант 22) ===");
+    System.out.println("Система управления радиостанциями (Вариант 22)");
 
     while (true) {
         System.out.println("\n--- ГЛАВНОЕ МЕНЮ ---");
@@ -54,7 +54,7 @@ void main() {
                 if (count == 0) {
                     System.out.println("Список пуст.");
                 } else {
-                    System.out.println("--- Список радиостанций ---");
+                    System.out.println("Список радиостанций");
                     for (int i = 0; i < count; i++) {
                         System.out.println("[" + i + "] " + radios[i].toString());
                     }
@@ -121,7 +121,7 @@ void main() {
 
                 double averageRange = totalRange / count;
 
-                System.out.println("\n--- Аналитика ---");
+                System.out.println("\n Аналитика");
                 System.out.printf("Средняя макс. дальность по всем радио: %.2f км\n", averageRange);
                 System.out.printf("Абсолютный максимум дальности: %.2f км (Бренд: %s)\n", absoluteMaxRange, bestRadio);
                 break;
