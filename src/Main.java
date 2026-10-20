@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-// Никакого public class Main нет. Метод пишется сразу.
+// Java 25+ B-)
 void main() {
     Scanner scanner = new Scanner(System.in);
 
