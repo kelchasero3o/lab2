@@ -154,10 +154,13 @@ void main() {
             while (true) {
                 System.out.print(prompt);
                 String line = scanner.nextLine().trim();
-                if (line.matches("-?\\d+")) {
-                    return Integer.parseInt(line);
+                if (line.matches("-?\\d{1,10}")) {
+                    long value = Long.parseLong(line);
+                    if (value >= Integer.MIN_VALUE && value <= Integer.MAX_VALUE) {
+                        return (int) value;
+                    }
                 }
-                System.out.println("Ошибка ввода: нужно целое число. Попробуйте снова.");
+                System.out.println("Ошибка ввода: нужно целое число от -2147483648 до 2147483647. Попробуйте снова.");
             }
         }
 
