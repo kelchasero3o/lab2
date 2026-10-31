@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-// Java 25+ B-)
+// Java 25+
 void main() {
     Scanner scanner = new Scanner(System.in);
 
@@ -18,10 +18,8 @@ void main() {
         System.out.println("5. Вычислить заданный параметр (Макс. дальность)");
         System.out.println("6. Усилить сигнал (Увеличить дальность)");
         System.out.println("0. Выход");
-        System.out.print("Выберите действие: ");
 
-        int choice = scanner.nextInt();
-        scanner.nextLine();
+        int choice = readInt(scanner, "Выберите действие: ");
 
         switch (choice) {
             case 1:
@@ -33,16 +31,14 @@ void main() {
                 System.out.println("Выберите тип конструктора:");
                 System.out.println("1. По умолчанию");
                 System.out.println("2. С параметрами");
-                int constrType = scanner.nextInt();
-                scanner.nextLine();
+                int constrType = readInt(scanner, "Ваш выбор: ");
 
                 if (constrType == 1) {
                     radios[count] = new Radio();
                 } else {
                     System.out.print("Введите бренд: ");
                     String brand = scanner.nextLine();
-                    System.out.print("Введите макс. дальность (км): ");
-                    double range = scanner.nextDouble();
+                    double range = readDouble(scanner, "Введите макс. дальность (км): ");
                     radios[count] = new Radio(brand, range);
                 }
 
@@ -66,15 +62,13 @@ void main() {
                     System.out.println("Список пуст. Нечего изменять.");
                     break;
                 }
-                System.out.print("Введите индекс для изменения (0-" + (count - 1) + "): ");
-                int modIndex = scanner.nextInt();
-                scanner.nextLine();
+                int modIndex = readInt(scanner, "Введите индекс для изменения (0-" + (count - 1) + "): ");
 
                 if (modIndex >= 0 && modIndex < count) {
                     System.out.print("Введите новый бренд: ");
                     radios[modIndex].setBrand(scanner.nextLine());
-                    System.out.print("Введите новую макс. дальность: ");
-                    radios[modIndex].setMaxRange(scanner.nextDouble());
+                    double newRange = readDouble(scanner, "Введите новую макс. дальность: ");
+                    radios[modIndex].setMaxRange(newRange);
                     System.out.println("Данные обновлены.");
                 } else {
                     System.out.println("Неверный индекс!");
@@ -86,8 +80,7 @@ void main() {
                     System.out.println("Список пуст.");
                     break;
                 }
-                System.out.print("Введите индекс для удаления (0-" + (count - 1) + "): ");
-                int delIndex = scanner.nextInt();
+                int delIndex = readInt(scanner, "Введите индекс для удаления (0-" + (count - 1) + "): ");
 
                 if (delIndex >= 0 && delIndex < count) {
                     for (int i = delIndex; i < count - 1; i++) {
@@ -131,13 +124,10 @@ void main() {
                     System.out.println("Список пуст.");
                     break;
                 }
-                System.out.print("Введите индекс радио для усиления (0-" + (count - 1) + "): ");
-                int boostIndex = scanner.nextInt();
-                scanner.nextLine();
+                int boostIndex = readInt(scanner, "Введите индекс радио для усиления (0-" + (count - 1) + "): ");
 
                 if (boostIndex >= 0 && boostIndex < count) {
-                    System.out.print("На сколько км увеличить дальность? ");
-                    double amount = scanner.nextDouble();
+                    double amount = readDouble(scanner, "На сколько км увеличить дальность? ");
 
                     radios[boostIndex].boostRange(amount);
 
@@ -158,3 +148,27 @@ void main() {
         }
     }
 }
+
+        // Безопасное чтение целого числа: при неверном вводе просит повторить.
+        int readInt(Scanner scanner, String prompt) {
+            while (true) {
+                System.out.print(prompt);
+                String line = scanner.nextLine().trim();
+                if (line.matches("-?\\d+")) {
+                    return Integer.parseInt(line);
+                }
+                System.out.println("Ошибка ввода: нужно целое число. Попробуйте снова.");
+            }
+        }
+
+        // Безопасное чтение вещественного числа (запятая и точка равнозначны).
+        double readDouble(Scanner scanner, String prompt) {
+            while (true) {
+                System.out.print(prompt);
+                String line = scanner.nextLine().trim().replace(',', '.');
+                if (line.matches("-?\\d+(\\.\\d+)?")) {
+                    return Double.parseDouble(line);
+                }
+                System.out.println("Ошибка ввода: нужно число. Попробуйте снова.");
+            }
+        }
