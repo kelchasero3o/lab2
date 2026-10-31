@@ -156,11 +156,11 @@ void main() {
                 String line = scanner.nextLine().trim();
                 if (line.matches("-?\\d{1,10}")) {
                     long value = Long.parseLong(line);
-                    if (value >= Integer.MIN_VALUE && value <= Integer.MAX_VALUE) {
+                    if (value >= 0 && value <= Integer.MAX_VALUE) {
                         return (int) value;
                     }
                 }
-                System.out.println("Ошибка ввода: нужно целое число от -2147483648 до 2147483647. Попробуйте снова.");
+                System.out.println("Ошибка ввода: нужно целое число от 0 до 2147483647. Попробуйте снова.");
             }
         }
 
